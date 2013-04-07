@@ -6,8 +6,8 @@
   = (hidden_field_tag 'q[s]', params[:q][:s]) if params[:q] && params[:q][:s]
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", '1', (params[:ratings] && params[:ratings][rating] == '1'), :id => "ratings_#{rating}"
-  = submit_tag 'Refresh', :id => 'ratings_submit'
+    = check_box_tag "ratings[#{rating}]", 1, (@selectedRatings.empty? or @selectedRatings.include?(rating)), :id => "ratings_#{rating}"
+    = submit_tag 'Refresh', :id => 'ratings_submit'
 
 %table#movies
   %thead
